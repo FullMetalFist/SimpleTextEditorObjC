@@ -23,6 +23,16 @@
     return self;
 }
 
+- (instancetype)initWithType:(NSString *)typeName error:(NSError * _Nullable __autoreleasing *)outError {
+    self = [super initWithType:typeName error:outError];
+    if (self) {
+        // add some default text for new documents
+        NSAttributedString *attributedText = [[NSAttributedString alloc] initWithString:@"Hello, World!"];
+        [self.text appendAttributedString:attributedText];
+    }
+    return self;
+}
+
 - (void)windowControllerDidLoadNib:(NSWindowController *)windowController {
     [super windowControllerDidLoadNib:windowController];
     
@@ -30,9 +40,16 @@
     [self.textView.layoutManager replaceTextStorage:self.text];
 }
 
+- (BOOL)prepareSavePanel:(NSSavePanel *)savePanel {
+    [savePanel setExtensionHidden:NO];
+    [savePanel setCanSelectHiddenExtension:NO];
+    [savePanel setMessage:@"Select a destination for your text file"];
+    return YES;
+}
+
 // boilerplate
 + (BOOL)autosavesInPlace {
-    return YES;
+    return NO;
 }
 
 
