@@ -12,7 +12,5 @@
 
 @property (nonatomic, readonly) NSTextStorage *text;
 
-@property (assign) IBOutlet NSTextView *textView;
-
 @end
 
