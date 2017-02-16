@@ -13,6 +13,7 @@
 		7C5B96C51E5369DE00C6281E /* Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C5B96C31E5369DE00C6281E /* Document.xib */; };
 		7C5B96C71E5369DE00C6281E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7C5B96C61E5369DE00C6281E /* Assets.xcassets */; };
 		7C5B96CA1E5369DE00C6281E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7C5B96C81E5369DE00C6281E /* MainMenu.xib */; };
+		7C5B96D41E54D1EC00C6281E /* PlainTextWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7C5B96D31E54D1EC00C6281E /* PlainTextWindowController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		7C5B96C61E5369DE00C6281E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7C5B96C91E5369DE00C6281E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		7C5B96CB1E5369DE00C6281E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7C5B96D21E54D1EC00C6281E /* PlainTextWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlainTextWindowController.h; path = Controller/PlainTextWindowController.h; sourceTree = "<group>"; };
+		7C5B96D31E54D1EC00C6281E /* PlainTextWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlainTextWindowController.m; path = Controller/PlainTextWindowController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +65,7 @@
 				7C5B96BB1E5369DE00C6281E /* AppDelegate.m */,
 				7C5B96C01E5369DE00C6281E /* Document.h */,
 				7C5B96C11E5369DE00C6281E /* Document.m */,
+				7C5B96D11E54D1C700C6281E /* Controller */,
 				7C5B96C31E5369DE00C6281E /* Document.xib */,
 				7C5B96C61E5369DE00C6281E /* Assets.xcassets */,
 				7C5B96C81E5369DE00C6281E /* MainMenu.xib */,
@@ -77,6 +81,15 @@
 				7C5B96BE1E5369DE00C6281E /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7C5B96D11E54D1C700C6281E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				7C5B96D21E54D1EC00C6281E /* PlainTextWindowController.h */,
+				7C5B96D31E54D1EC00C6281E /* PlainTextWindowController.m */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +167,7 @@
 				7C5B96C21E5369DE00C6281E /* Document.m in Sources */,
 				7C5B96BF1E5369DE00C6281E /* main.m in Sources */,
 				7C5B96BC1E5369DE00C6281E /* AppDelegate.m in Sources */,
+				7C5B96D41E54D1EC00C6281E /* PlainTextWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,6 +7,7 @@
 //
 
 #import "Document.h"
+#import "PlainTextWindowController.h"
 
 @interface Document ()
 
@@ -33,13 +34,6 @@
     return self;
 }
 
-- (void)windowControllerDidLoadNib:(NSWindowController *)windowController {
-    [super windowControllerDidLoadNib:windowController];
-    
-    // replace the NSTextView's text storage
-    [self.textView.layoutManager replaceTextStorage:self.text];
-}
-
 - (BOOL)prepareSavePanel:(NSSavePanel *)savePanel {
     [savePanel setExtensionHidden:NO];
     [savePanel setCanSelectHiddenExtension:NO];
@@ -47,16 +41,14 @@
     return YES;
 }
 
+- (void)makeWindowControllers {
+    PlainTextWindowController *windowController = [[PlainTextWindowController alloc] init];
+    [self addWindowController:windowController];
+}
+
 // boilerplate
 + (BOOL)autosavesInPlace {
     return NO;
-}
-
-
-- (NSString *)windowNibName {
-    // Override returning the nib file name of the document
-    // If you need to use a subclass of NSWindowController or if your document supports multiple NSWindowControllers, you should remove this method and override -makeWindowControllers instead.
-    return @"Document";
 }
 
 
