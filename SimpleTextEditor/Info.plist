@@ -7,6 +7,28 @@
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeIconFile</key>
+			<string></string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.rtf</string>
+			</array>
+			<key>NSDocumentClass</key>
+			<string>Document</string>
+			<key>CFBundleTypeName</key>
+			<string>Rich Text Format</string>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+		</dict>
+		<dict>
+			<key>LSHandlerRank</key>
+			<string>Alternate</string>
+			<key>LSItemContentTypes</key>
+			<array>
+				<string>public.plain-text</string>
+			</array>
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>txt</string>
@@ -14,7 +36,7 @@
 			<key>CFBundleTypeIconFile</key>
 			<string></string>
 			<key>CFBundleTypeName</key>
-			<string>DocumentType</string>
+			<string>Plain Text</string>
 			<key>CFBundleTypeOSTypes</key>
 			<array>
 				<string>????</string>
