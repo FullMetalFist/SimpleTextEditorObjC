@@ -54,29 +54,32 @@
 
 - (NSData *)dataOfType:(NSString *)typeName error:(NSError **)outError {
     // Insert code here to write your document to data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning nil.
-    // convert NSTextStorage to a plain NSString
-    NSString *plainText = [self.text string];
+    // convert NSTextStorage to NSData (conversion depends on document type)
+    NSData *data = nil;
+    if ([typeName isEqualToString:@"public.plaintext"]) {
+        NSLog(@"Writing Plaintext");
+        data = [[self.text string] dataUsingEncoding:NSUTF8StringEncoding];
+    } else if ([typeName isEqualToString:@"public.rtf"]) {
+        NSLog(@"Writing RTF");
+        NSRange range = NSMakeRange(0, [[self.text string] length]);
+        NSDictionary *attributes = @{NSDocumentTypeDocumentAttribute:NSRTFTextDocumentType};
+        data = [self.text RTFFromRange:range documentAttributes:attributes];
+    }
     
-    // convert NSTextStorage to NSData
-    NSData *data = [plainText dataUsingEncoding:NSUTF8StringEncoding];
-    
-    // return the data (NSDocument does the writing for us)
+    // return the data (NSDocument does the writing)
     return data;
 }
 
-
-- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError **)outError {
-    // Insert code here to read your document from the given data of the specified type. If outError != NULL, ensure that you create and set an appropriate error when returning NO.
+- (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError * _Nullable __autoreleasing *)outError {
     // convert the NSData to an NSAttributedString
-    NSString *plainText = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSString *plaintext = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
     
-    // replace the contents of NSTextStorage
+    // replace the contents of nstextstorage
     NSRange range = NSMakeRange(0, [self.text length]);
-    [self.text replaceCharactersInRange:range withString:plainText];
+    [self.text replaceCharactersInRange:range withString:plaintext];
     
-    // return YES for success or NO if an error occurred
+    // return yes for success or NO if an error occurred
     return YES;
 }
-
 
 @end
