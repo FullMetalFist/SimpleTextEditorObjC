@@ -72,11 +72,21 @@
 
 - (BOOL)readFromData:(NSData *)data ofType:(NSString *)typeName error:(NSError * _Nullable __autoreleasing *)outError {
     // convert the NSData to an NSAttributedString
-    NSString *plaintext = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSAttributedString *attributedText;
+    if ([typeName isEqualToString:@"public.plaintext"]) {
+        NSLog(@"reading plaintext");
+        NSString *plaintext = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        attributedText = [[NSAttributedString alloc] initWithString:plaintext];
+    } else if ([typeName isEqualToString:@"public.rtf"]) {
+        NSLog(@"reading rtf");
+        attributedText = [[NSAttributedString alloc] initWithRTF:data documentAttributes:NULL];
+    } else {
+        // got an unidentified type
+        return NO;
+    }
     
-    // replace the contents of nstextstorage
-    NSRange range = NSMakeRange(0, [self.text length]);
-    [self.text replaceCharactersInRange:range withString:plaintext];
+    // replace the text storage contents
+    [self.text setAttributedString:attributedText];
     
     // return yes for success or NO if an error occurred
     return YES;
